@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+      rel="stylesheet">
+      
+  <!-- Our custom CSS -->
+  <link rel="stylesheet" href="index.css">
+  <title>Frontend Mentor | Space tourism website</title>
+  <script src="navigation.js" defer></script>
+
+</head>
+<body class="technology">
+    <a class="skip-to-content" href="#main">Skip to content</a>
+    <header class="primary-header flex">
+      <div>
+        <img src="./assets/shared/logo.svg" alt="space tourism logo" class="logo">
+      </div>
+      <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
+      <nav> 
+          <ul id="primary-navigation" data-visible="false" class="primary-navigation underline-indicators flex">
+              <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="index.html"><span aria-hidden="true">00</span>Home</a>
+              <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="destination.html"><span aria-hidden="true">01</span>Destination</a>
+              <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="crew.html"><span aria-hidden="true">02</span>Crew</a>
+              <li class="active"><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="technology.html"><span aria-hidden="true">03</span>Technology</a>
+          </ul>
+      </nav>
+    </header>
+  
+
+    <main class="main-content">
+        <h1 class="numbered-title"><span>03</span>Space launch 101</h1>
+
+        <div class="tech-container">
+            <div class="number-indicators">
+                <button class="number-button active" data-index="0">1</button>
+                <button class="number-button" data-index="1">2</button>
+                <button class="number-button" data-index="2">3</button>
+            </div>
+
+            <div class="tech-content" data-visible="true">
+                <p class="terminology">The terminology...</p>
+                <h2 class="tech-name">Launch Vehicle</h2>
+                <p class="tech-description">
+                    A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!
+                </p>
+            </div>
+
+            <img src="./assets/technology/image-launch-vehicle-portrait.jpg" alt="Launch vehicle" class="tech-image" data-visible="true">
+
+            <div class="tech-content" data-visible="false">
+                <p class="terminology">The terminology...</p>
+                <h2 class="tech-name">Spaceport</h2>
+                <p class="tech-description">
+                    A spaceport or cosmodrome is a site for launching spacecraft, by analogy to the seaport for ships or airport for aircraft. Based in the famous Cape Canaveral, our spaceport is ideally situated to take advantage of the Earth's rotation for launch.
+                </p>
+            </div>
+
+            <img src="./assets/technology/image-spaceport-portrait.jpg" alt="Spaceport" class="tech-image" data-visible="false">
+
+            <div class="tech-content" data-visible="false">
+                <p class="terminology">The terminology...</p>
+                <h2 class="tech-name">Space Capsule</h2>
+                <p class="tech-description">
+                    A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.
+                </p>
+            </div>
+
+            <img src="./assets/technology/image-space-capsule-portrait.jpg" alt="Space capsule" class="tech-image" data-visible="false">
+        </div>
+    </main>
+
+    <script>
+        const numberButtons = document.querySelectorAll('.number-button');
+        const techContents = document.querySelectorAll('.tech-content');
+        const techImages = document.querySelectorAll('.tech-image');
+
+        numberButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                numberButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Update visible content
+                const index = button.dataset.index;
+                techContents.forEach((content, i) => {
+                    content.dataset.visible = i === parseInt(index);
+                });
+                techImages.forEach((image, i) => {
+                    image.dataset.visible = i === parseInt(index);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
